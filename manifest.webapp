@@ -1,0 +1,27 @@
+{
+  "name": "Hotels",
+  "description": "Una aplicación web para obtener información sobre los hotoles en la comunidad de Madrid.",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Samuel Rey",
+    "url": "http://www.conquestofsteel.co.uk"
+  },
+  "activities": {
+    "share": {
+      "href": "index.html",
+      "disposition": "window"
+    }
+  },
+  "default_locale": "es",
+  "permissions": {
+    "desktop-notification": {
+      "description": "Necesitada para informar de notificaciones."
+    },
+    "geolocation": {
+      "description": "Necesitada para autolocalizarse en el mapa. "
+    },
+    "storage": {
+      "description": "La app utiliza localStorage."
+    }
+  }
+}

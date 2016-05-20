@@ -1,0 +1,160 @@
+/* Generic */
+body{
+	background: #D0D5E1;
+}
+
+li {
+	list-style-type: none;
+}
+
+form {
+	margin: 10px;
+}
+
+/* Header */
+.page-header{
+	margin: 0px;
+	background: #EEFAFF;
+	margin: 0px;
+	padding: 15px;
+	background-repeat: no-repeat;
+    background-position: right;
+	background: -webkit-linear-gradient(right, #EEFAFF, #78A1B2); 
+    background: -o-linear-gradient(right, #EEFAFF, #78A1B2); 
+    background: -moz-linear-gradient(right, #EEFAFF, #78A1B2); 
+    background: linear-gradient(right, #EEFAFF, #78A1B2);
+}
+
+.page-header h1{
+	font-size: 75px;
+	color: #ffffff;
+	margin: 5px; 
+}
+
+.page-header h1 small{
+	font-size: 30px;
+	text-shadow: 1px 2px #3C5284;
+	margin: 3px;
+}
+
+/* lateral buttons*/
+.lateralPills a{
+	color: #111C35;
+}
+
+.lateralPills{
+	background-color: #78A1B2;
+	margin-bottom: 5px;
+	margin-right: 0px;
+	box-shadow: 3px 3px 5px black;
+}
+
+.lateralPills:hover {
+	box-shadow: 0px 0px 0px black;
+}
+
+/* Hotels List*/
+.hotelElement {
+	margin: 7px;
+	padding: 7px;
+	background-color: #78A9C6;
+	color: black;
+	border-color: #000000;
+	border-radius: 3px;
+	box-shadow: 3px 3px 5px black;
+}
+
+.hotelsFound{
+	color: #ffffff;
+}
+
+
+/* Collections List*/
+.collElement, .userElement {
+	font-size: 20px;
+	padding: 5px;
+	border-width: 3px;
+	border-radius: 3px;
+	margin: 3px;
+	background-color: #547D95;
+	color: #ffffff;
+	box-shadow: 3px 3px 3px black;
+}
+
+.userHeader {
+	padding: 5px;
+	border-radius: 3px;
+	margin: 3px;
+}
+
+.userHeader p {
+	font-size: 30px;
+}
+
+.moreInfo {
+	font-size: 15px;
+	color: #000000;
+}
+
+.moreInfo a {
+	color: #A8D5F3;
+}
+
+/* tabs sizes and scroll*/
+#hotelsMap {
+	height: 500px;
+}
+
+.scroll {
+	height: 500px;
+	overflow: auto;
+}
+
+/* titles*/
+.colTitle, .usersTitle {
+	color: #ffffff;
+	text-shadow: 4px 4px 4px #78A9C6;
+	text-decoration: underline #78A9C6;
+
+}
+
+.hotelTitle {
+	color: #481F6C;
+	text-shadow: 3px 3px 3px #29123D; 
+}
+
+.hotelCat {
+	color: #29123D;
+}
+
+/* hover */
+.dropHover {
+	background-color: #E2EDFF;
+}
+
+.collElement:hover, .userHeader:hover {
+	background-color: #4C9ED5;
+	box-shadow: 0px 0px 0px black;
+	cursor: pointer;
+}
+
+.hotelElement:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 0px black;
+	background-color: #78A1B2;
+}
+
+.additionalInfo {
+	background-color: 
+}
+
+.hotelDescription , .carousel{
+	margin: 7px;
+}
+
+#logginInfo {
+	font-size: 20px;
+	margin: 7px;
+	padding: 5px;
+	align-content: center;
+}

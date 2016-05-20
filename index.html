@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hoteles</title>
+	<html manifest="/cache.manifest">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
+	<link rel="stylesheet" href="jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="leaflet.css">
+	<link rel="stylesheet" type="text/css" href="hotels.css">
+</head>
+<body>
+	<div class="page-header col-xs-12">
+  		<h1>Hoteles  <small>Encuentra tu alojamiento ideal.</small></h1>
+	</div>
+
+	<!-- Lateral buttons -->
+	<ul class="nav nav-pills nav-stacked col-xs-12 col-md-1">
+		<li role="presentation" class="lateralPills" id="getHotels"><a href="#">Cargar Hoteles</a></li>
+		<li role="presentation" class="lateralPills" id="saveInfo"><a href="#">Guardar Datos</a></li>
+  		<li role="presentation" class="lateralPills" id="loadInfo"><a href="#">Cargar Datos</a></li>
+  		<li role="presentation" class="lateralPills" id="fbLog"><a href="#">Login With FB</a></li>
+	</ul>
+
+	<div id='hideLogInf' hidden>
+	<div class='col-xs-1'></div>
+	<div id='logginInfo' class="bg-info text-info col-xs-10" ></div>
+	<div class='col-xs-1'></div>
+	</div>
+
+	<!-- Nav tabs -->
+	<div class="col-xs-12 col-md-11">
+		<ul class="nav nav-tabs nav-justified" id="mainTabs">
+		  <li role="presentation" class="active"><a href="#principal" >Principal</a></li>
+		  <li role="presentation"><a href="#management">Gestion De Colecciones</a></li>
+		  <li role="presentation"><a href="#housed">Gestion De Alojados</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active fade in" id="principal">
+		    	<div id="hotelsList" class="col-xs-12 col-md-3 scroll"></div>
+		    	<div id="hotelsMap" class="col-xs-12 col-md-6"></div>
+		    	<div id="collectionSelected" class="col-xs-12 col-md-3 scroll" hidden></div>
+		    	<div id="hotelSelected" class="col-xs-12"></div>
+		    </div>
+		    <div role="tabpanel" class="tab-pane fade" id="management">
+		    	<div class="col-xs-12 activateInfo bg-info warningMsg">
+		    		<p class="text-info">Para activar la gestión de colecciones es necesario descargar los hoteles.</p>
+		    		<p class="text-info">Puedes hacer esto pulsando el botón "Cargar Hoteles" de la pestaña principal.</p>
+		    	</div>
+		    	<div id="draggableHotelsList" class="col-xs-12 col-md-6 scroll"></div>
+		    	<div id="collections" class="col-xs-12 col-md-6 scroll" hidden>
+		    		<h2 class="colTitle">Tus Colecciones:</h2>
+		    		<form id="createCollection">
+		    			<input type="text" id="collectionName">
+		    			<input type="submit" value="Crear Colección" class="btn btn-default">
+		    		</form>
+		    		<div class="col-xs-12"><ul id="collectionsList"></ul></div>
+		    		<div id="currentCollection" hidden></div>
+		    	</div>
+		    </div>
+		    <div role="tabpanel" class="tab-pane fade" id="housed">
+		    	<div class="col-xs-12 activateInfo bg-info warningMsg">
+		    		<p class="text-info">Para activar la gestión de colecciones es necesario descargar los hoteles.</p>
+		    		<p class="text-info">Puedes hacer esto pulsando el botón "Cargar Hoteles" de la pestaña principal.</p>
+		    	</div>
+		    	<div id="hotelDescription" class="col-xs-12 col-md-6"></div>
+		    	<div class="col-xs-12 col-md-6">
+			    	<form id="addUser" hidden>
+			    		<input type="text" id="userId">
+			    		<input type="submit" value="Añadir Usuario" class="btn btn-default">
+			    	</form>	
+			    	<div id="users"></div>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+
+
+	<!-- Save Info Dialog -->
+	<div id="saveDialog" title="Guardar Datos">
+		<p>Introduce los datos necesarios para guardar la información de tus colecciones y las asignaciones de usuarios de Google+ a hoteles</p>	
+		<form id="saveDataForm">
+			<p>Github Token: <input type="text" id="saveToken"></p>
+			<p>Usuario: <input type="text" id="saveUser">
+			<p>Nombre del Repositorio: <input type="text" id="saveRepoName"></p>
+			<p>Nombre del Fichero: <input type="text" id="saveFileName"></p>
+			<p><input type="submit" value="Guardar"></p>
+		</form>
+	</div>
+
+	<!-- Load Info Dialog -->
+	<div id="loadDialog" title="Cargar Datos">
+		<p>Introduce los datos necesarios para cargar la información de tus colecciones y las asignaciones de usuarios de Google+ a hoteles</p>
+		<form id="loadDataForm">
+			<p>Github Token: <input type="text" id="loadToken"></p>
+			<p>Usuario: <input type="text" id="loadUser">
+			<p>Nombre del Repositorio: <input type="text" id="loadRepoName"></p>
+			<p>Nombre del Fichero: <input type="text" id="loadFileName"></p>
+			<p><input type="submit" value="Cargar"></p>
+		</form>
+	</div>
+
+	<!-- Get Hotels Warning -->
+	<div id="getHotelsWarning" class="bg-warning">
+		<p>Para utilizar esta funcionalidad primero debes descargar los hoteles.</p>
+	</div>
+	
+
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="leaflet.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="github.js"></script>
+	<script type="text/javascript" src="hotels.js"></script>
+</body>
+</html>
