@@ -448,12 +448,13 @@ function createCollection(e){
 }
 
 function addCarousel(imgs){
-	var html = '<div id="hotelImgsCarousel" class="carousel slide col-xs-12 col-md-5" data-ride="carousel">';
+	//id="hotelImgsCarousel"
+	var html = '<div  class="hotelImgsCarousel carousel slide col-xs-12 col-md-5" data-ride="carousel">';
 	var indicators = '<ol class="carousel-indicators">';
 	var slides = '<div class="carousel-inner" role="listbox">';
 
 	for (var i = 0; i < imgs.length; i++){
-		indicators += '<li data-target="#hotelImgsCarousel" data-slide-to="' + i + '"';
+		indicators += '<li data-target=".hotelImgsCarousel" data-slide-to="' + i + '"';
 	
 		if (i == 0){
 			indicators += ' class="active"';
@@ -467,10 +468,10 @@ function addCarousel(imgs){
 
 	indicators += "</ol>";
 	slides += "</div>";
-	var controls = '<a class="left carousel-control" href="#hotelImgsCarousel" role="button" data-slide="prev">';
+	var controls = '<a class="left carousel-control" href=".hotelImgsCarousel" role="button" data-slide="prev">';
 	controls += '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
 	controls += '<span class="sr-only">Anterior</span></a>';
-	controls += '<a class="right carousel-control" href="#hotelImgsCarousel" role="button" data-slide="next">';
+	controls += '<a class="right carousel-control" href=".hotelImgsCarousel" role="button" data-slide="next">';
 	controls += '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
 	controls += '<span class="sr-only">Next</span></a>';
 
