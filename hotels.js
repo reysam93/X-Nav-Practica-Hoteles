@@ -1,9 +1,3 @@
-//IDs
-// 108086881826934773478
-// 103846222472267112072
-
-// fa5a4cb3fe80ddef979dcfb33da57d07570ade5c
-
 hotels = null;
 markers = [];
 collections = [];
@@ -44,6 +38,9 @@ $(document).ready(function(){
 		if (Modernizr.history){
 			history.pushState(null, null, link);
 		}
+	});
+	$("#removeErrorUser").click(function(){
+		$(this).parent().hide("puff", {}, 1000);
 	});
 	setHistoryAPI();
 	setFB();
@@ -157,7 +154,7 @@ function saveData(e){
 	repo.write('master', fileName, data, "saving data",
 		function(err){
 			if (err){
-				alert(err);
+				alert(err.error);
 			}else{
 				console.log("GUARDADO!");
 			}
@@ -179,7 +176,8 @@ function loadData(e){
 	var repo = github.getRepo(user, repoName);
 	repo.read('master', fileName, function(err, textData){
 		if (err){
-			alert(err);
+			myErr = err
+			alert(err.error);
 		}else{
 			var data = JSON.parse(textData);
 			collections = data.collections;
@@ -286,7 +284,13 @@ function getUserData(userId, userList){
 			'userId': userId
 		});
 		request.execute(function(resp){
-			myresp = resp
+			if (resp.error){
+				var error = "ERR " + resp.error.code + ": " + resp.error.message;
+				$("#errorInfo").html(error);
+				$("#errorUser").show("puff", {}, 1000);
+				console.log(error);
+				return
+			}
 			var user = {};
 			user.img = resp.image.url;
 			user.name = resp.displayName;
