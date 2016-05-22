@@ -25,7 +25,7 @@ Al menos con mi versión de Firefox el css no se carga bien cuando el servidor e
 * La aplicación se ha adaptado para que pueda usarse en terminales con Firefox OS como aplicación web.
 * Se ha utilizado CSS3 para la interfaz y elementos de HTML5 como la etiqueta footer.
 * Se han tenido en cuenta aspectos de optimización como poner todos los scripts al final para que no bloqueen la carga, usar cdns siempre que ha sido posible, así como versiones minimizadas de las librerías, y se ha maximizado el uso de la cache.
-* 
+
 ## Video de la funcionalidad básica
 <a href='https://youtu.be/FdT4Mp-7pYY'>https://youtu.be/FdT4Mp-7pYY</a>
 
